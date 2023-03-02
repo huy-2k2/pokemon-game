@@ -8,6 +8,7 @@ createApp({
         cards: [],
         openedCards: [],
         openingCards: [],
+        audio: null,
         timeout: null
       }
     },
@@ -42,6 +43,8 @@ createApp({
         },
         handleOpen(card) {
             if(!this.timeout) {
+                this.audio = new Audio('/assets/mp3/open.mp3')
+                this.audio.play()
                 this.openingCards.push(card)
                 if(this.openingCards.length == 2) {
                     if(this.openingCards[0].id == this.openingCards[1].id) {
